@@ -1,5 +1,5 @@
 {
-   "abstract" : "Blah blah blah",
+   "abstract" : "Syntactical Sugar working with DBIx::Class and Dancer",
    "author" : [
       "Sean Zellmer <sean@lejeunerenard.com>"
    ],
@@ -46,6 +46,17 @@
       }
    },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/lejeunerenard/Dancer-Plugin-DBIC-Sugar/issues"
+      },
+      "homepage" : "https://github.com/lejeunerenard/Dancer-Plugin-DBIC-Sugar",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/lejeunerenard/Dancer-Plugin-DBIC-Sugar.git",
+         "web" : "https://github.com/lejeunerenard/Dancer-Plugin-DBIC-Sugar"
+      }
+   },
    "version" : "0.01"
 }
 

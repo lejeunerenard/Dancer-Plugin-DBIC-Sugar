@@ -1,14 +1,18 @@
 # NAME
 
-Dancer::Plugin::DBIC::Sugar - Blah blah blah
+Dancer::Plugin::DBIC::Sugar - Syntactical Sugar working with DBIx::Class and Dancer
 
 # SYNOPSIS
 
     use Dancer::Plugin::DBIC::Sugar;
+    # If Users is declared as a ResultSource
+    Users->search({
+      first_name => 'Bob',
+    });
 
 # DESCRIPTION
 
-Dancer::Plugin::DBIC::Sugar is
+Dancer::Plugin::DBIC::Sugar is a sugary layer on top of the Dancer::Plugin::DBIC plugin.  
 
 # AUTHOR
 
