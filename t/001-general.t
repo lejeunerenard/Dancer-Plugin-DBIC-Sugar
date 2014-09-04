@@ -3,7 +3,7 @@ use warnings;
 
 use lib qw{ ./t/lib };
 
-use Test::More tests => 7;
+use Test::More tests => 2;
 use Test::Deep; # (); # uncomment to stop prototype errors
 use Test::Exception;
 
