@@ -1,4 +1,6 @@
 Revision history for Dancer-Plugin-DBIC-Sugar
 
 {{$NEXT}}
+
+0.01  2014-09-04 13:42:15 CDT
         - Initial release
