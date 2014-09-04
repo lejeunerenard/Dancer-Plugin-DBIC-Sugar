@@ -1,6 +1,7 @@
 Revision history for Dancer-Plugin-DBIC-Sugar
 
 {{$NEXT}}
+        - Fixed Problems when Dancer::Plugin::DBIC::Sugar's import was called before configuration was loaded
 
 0.01  2014-09-04 13:42:15 CDT
         - Initial release

@@ -8,17 +8,43 @@ our $VERSION = '0.01';
 use Dancer ':syntax';
 use Dancer::Plugin;
 use Dancer::Plugin::DBIC;
-
-# Get all the result sources
-my $source_registrations = schema->source_registrations;
-foreach my $source ( keys %{ $source_registrations } ) {
-   # Register function by the same name
-   register $source_registrations->{$source}->source_name => sub {
-      return $source_registrations->{$source}->resultset;
-   }
+our @ISA = qw(Exporter);
+our @EXPORT;
+{
+   no strict 'refs';
+   @EXPORT = @{"Dancer::Plugin::DBIC::EXPORT"};
 }
 
-register_plugin;
+# To get the Resulsets subs without necessitating the import of this
+# module after the config is loaded, we have to overwrite
+# Dancer::Plugin::DBIC's schema sub with our own to get the Resultsets
+# after the schema has been loaded. Once we get the ResultSets we can
+# register the functions of this module and export them.
+my $old_schema = \&schema;
+{
+   no warnings 'redefine';
+   *schema = sub {
+      my $old_schema_return = &$old_schema(@_);
+
+      # Get all the result sources
+      my $source_registrations = $old_schema_return->source_registrations;
+      foreach my $source ( keys %{ $source_registrations } ) {
+         # Register function by the same name
+         register $source_registrations->{$source}->source_name => sub {
+            return $source_registrations->{$source}->resultset;
+         }
+      }
+
+      # Delayed register
+      register_plugin;
+
+      # Now pump all the exportable functions up the chain AKA 1 level
+      __PACKAGE__->export_to_level(1, undef, @EXPORT);
+      # So that schema still works as normal
+      return $old_schema_return;
+   };
+}
+
 1;
 __END__
 
