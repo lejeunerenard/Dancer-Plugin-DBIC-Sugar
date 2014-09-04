@@ -3,7 +3,7 @@ package Dancer::Plugin::DBIC::Sugar;
 use strict;
 use warnings;
 use 5.008_005;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use Dancer ':syntax';
 use Dancer::Plugin;
