@@ -8,3 +8,4 @@ MYMETA.*
 *.sw[pqrno]
 local/
 cpanfile.snapshot
+blib/
